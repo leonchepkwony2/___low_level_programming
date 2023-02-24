@@ -14,6 +14,7 @@ void print_line(int n)
 			_putchar('_');
 			n--;
 		}
+		_putchar('\n');
 	}
 	else
 	{
