@@ -4,8 +4,8 @@ Project done during **Full Stack Software Engineering studies** at **ALX Program
 
 ## Technologies
 
-*Editors used: vi, vim
-*All  files aree compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
+* Editors used: vi, vim
+* All  files aree compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
 
 ## Concepts
 
