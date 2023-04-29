@@ -8,7 +8,7 @@
 char *create_buffer(char *file)
 {
 	char *buffer = malloc(sizeof(char) * 1024);
-	
+
 	if (buffer == NULL)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
@@ -18,12 +18,12 @@ char *create_buffer(char *file)
 }
 /**
  * close_file - Closes file descriptors.
- * @fd - file descriptor
+ * @fd: file descriptor
  */
 void close_file(int fd)
 {
 	int c = close(fd);
-	
+
 	if (c == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
@@ -46,7 +46,7 @@ int main(int argc, char *argv[])
 	char *buffer = create_buffer(argv[2]);
 	int from = open(argv[1], O_RDONLY);
 	int to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	
+
 	while (1)
 	{
 		int r = read(from, buffer, 1024);
@@ -61,9 +61,9 @@ int main(int argc, char *argv[])
 		{
 			break;
 		}
-		
+
 		int w = write(to, buffer, r);
-		
+
 		if (w == -1)
 		{
 			dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]);
@@ -74,6 +74,6 @@ int main(int argc, char *argv[])
 	free(buffer);
 	close_file(from);
 	close_file(to);
-	
+
 	return (0);
 }
