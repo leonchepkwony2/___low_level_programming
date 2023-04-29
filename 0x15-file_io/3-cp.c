@@ -38,14 +38,17 @@ void close_file(int fd)
  */
 int main(int argc, char *argv[])
 {
+	char *buffer;
+	int from, to, w;
+
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	char *buffer = create_buffer(argv[2]);
-	int from = open(argv[1], O_RDONLY);
-	int to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+	buffer = create_buffer(argv[2]);
+	from = open(argv[1], O_RDONLY);
+	to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
 	while (1)
 	{
@@ -58,11 +61,10 @@ int main(int argc, char *argv[])
 			exit(98);
 		}
 		if (r == 0)
-		{
-			break;
-		}
 
-		int w = write(to, buffer, r);
+			break;
+
+		w = write(to, buffer, r);
 
 		if (w == -1)
 		{
